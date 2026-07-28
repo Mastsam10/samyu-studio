@@ -1,0 +1,5 @@
+# app-ads.txt — authorizes sellers of this developer's app ad inventory.
+# REQUIRED at the domain root once AdMob is live. Replace pub-0000000000000000
+# with the real AdMob publisher ID (AdMob > Settings > Publisher ID), then add
+# the same domain in App Store Connect / Play Console as the developer website.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
