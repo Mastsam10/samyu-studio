@@ -1,4 +1,4 @@
-# Studio site — legal pages for every game
+# samyu.studio — legal pages for every game
 
 One GitHub Pages site serving the privacy + support URLs that Apple and Google
 require for EVERY app. Set up once; each new game costs one folder.
@@ -16,7 +16,7 @@ app-ads.txt           AdMob seller authorization (domain root — required once 
 2. Find/replace the game name inside both files.
 3. Add a row to `index.html`.
 4. Commit and push. URLs are live in ~1 minute:
-   `https://<user>.github.io/<repo>/<game-id>/privacy.html`
+   `https://samyu.studio/<game-id>/privacy.html`
 
 ## Store fields these satisfy
 - Apple: Privacy Policy URL (mandatory, even at zero data collection) and
@@ -24,9 +24,17 @@ app-ads.txt           AdMob seller authorization (domain root — required once 
 - Google Play: Privacy Policy URL (mandatory) and developer website.
 - AdMob: app-ads.txt at the domain root, matching the store listing's website.
 
-## Custom domain later
-Buy a studio domain, add a `CNAME` file containing the bare domain, point DNS at
-GitHub Pages. Existing URLs redirect; no store resubmission needed.
+## Custom domain (LIVE: samyu.studio)
+`CNAME` holds the bare domain. DNS at the registrar must be:
+```
+A     @    185.199.108.153
+A     @    185.199.109.153
+A     @    185.199.110.153
+A     @    185.199.111.153
+CNAME www  <username>.github.io
+```
+Then GitHub repo Settings > Pages > Custom domain = samyu.studio, and tick
+"Enforce HTTPS" once the certificate provisions (can take up to ~24h).
 
 ## Rule
 Whenever data collection changes (ads, analytics, accounts, a backend), update
