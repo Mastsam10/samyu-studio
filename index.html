@@ -1,19 +1,248 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Samyu Studio</title>
-<style>
-body{font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;max-width:720px;margin:60px auto;padding:0 20px;color:#1a1622}
-h1{line-height:1.2}ul{list-style:none;padding:0}
-li{padding:14px 0;border-bottom:1px solid #e6e4ea}
-a{color:#1a1622}small{color:#6b6676}
-</style></head><body>
-<h1>Samyu Studio</h1>
-<p>Games for phones.</p>
-<ul>
-  <li><strong>Poli Fartride</strong><br>
-    <small><a href="polifartride/privacy.html">Privacy Policy</a> ·
-    <a href="polifartride/support.html">Support</a></small></li>
-</ul>
-<p><small>Support enquiries: <a href="mailto:support@samyu.studio">support@samyu.studio</a></small></p>
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Samyu Studio — small mobile games that explain themselves</title>
+    <meta
+      name="description"
+      content="Samyu Studio is a one person game studio in Texas making mobile games you play with one thumb and understand in three seconds. First game: Poli Fartride."
+    />
+    <link rel="canonical" href="https://samyu.studio/" />
+    <meta name="theme-color" content="#0b0e14" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Samyu Studio" />
+    <meta property="og:title" content="Samyu Studio" />
+    <meta
+      property="og:description"
+      content="One thumb. No tutorial. Small mobile games that explain themselves."
+    />
+    <meta property="og:url" content="https://samyu.studio/" />
+    <meta property="og:image" content="https://samyu.studio/assets/img/og-studio.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Samyu Studio" />
+    <meta
+      name="twitter:description"
+      content="One thumb. No tutorial. Small mobile games that explain themselves."
+    />
+    <meta name="twitter:image" content="https://samyu.studio/assets/img/og-studio.jpg" />
+
+    <!-- The two faces on the first screen. Preloaded so the headline and the
+         character paint together instead of one arriving after the other. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/luckiest-guy.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2" />
+    <link rel="preload" as="image" fetchpriority="high" href="/assets/img/strain-0.webp" />
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/studio.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Samyu Studio",
+        "url": "https://samyu.studio/",
+        "logo": "https://samyu.studio/assets/img/favicon.svg",
+        "description": "Independent mobile game studio making one-thumb games for iOS and Android.",
+        "email": "support@samyu.studio",
+        "founder": { "@type": "Person", "name": "Samuel Yu" },
+        "address": { "@type": "PostalAddress", "addressRegion": "TX", "addressCountry": "US" }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="shell nav-in">
+        <a class="wordmark" href="/">
+          <img class="mark" src="/assets/img/favicon.svg" width="22" height="22" alt="" />
+          Samyu Studio
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#games">Games</a>
+          <a href="#studio" class="hide-sm">The rules</a>
+          <a href="#who">Who</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================================================== hero + demo == -->
+      <section class="hero">
+        <div class="shell hero-in">
+          <div>
+            <p class="label">Independent mobile games · Texas</p>
+            <h1 class="display">One thumb. <span class="l2">No tutorial.</span></h1>
+            <p class="lede">
+              Samyu Studio is one person making small mobile games that explain themselves. You open
+              one, you understand it in about three seconds, and it is funny before you have decided
+              whether you like it. Hold the button and you have already learned the first game.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="/polifartride/">See the first game</a>
+              <a class="btn btn-ghost" href="#studio">How I build them</a>
+            </div>
+          </div>
+
+          <!-- The hold demo is the real game's six-stage strain art, driven by the
+               real game's only input. It is the pitch, not a decoration. -->
+          <div class="strain" data-strain>
+            <div class="strain-stage">
+              <img data-frame class="is-on" src="/assets/img/strain-0.webp" width="440" height="670" alt="A cartoon politician, composed, before anything goes wrong" fetchpriority="high" />
+              <img data-frame src="/assets/img/strain-1.webp" width="440" height="670" alt="" aria-hidden="true" />
+              <img data-frame src="/assets/img/strain-2.webp" width="440" height="670" alt="" aria-hidden="true" />
+              <img data-frame src="/assets/img/strain-3.webp" width="440" height="670" alt="" aria-hidden="true" />
+              <img data-frame src="/assets/img/strain-4.webp" width="440" height="670" alt="" aria-hidden="true" />
+              <img data-frame src="/assets/img/strain-5.webp" width="440" height="670" alt="" aria-hidden="true" />
+            </div>
+            <div class="strain-meter" aria-hidden="true"><span data-fill></span></div>
+            <button class="hold" type="button" data-hold>Hold</button>
+            <p class="strain-read" data-readout aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- ======================================================= the game == -->
+      <section id="games">
+        <div class="shell">
+          <p class="label">01 / The first game</p>
+          <div class="feature">
+            <div>
+              <div class="feature-head">
+                <img src="/assets/img/icon-poli-512.webp" width="512" height="512" alt="Poli Fartride app icon" />
+                <h2 class="game-title">Poli&nbsp;Fartride</h2>
+              </div>
+              <p class="lede">
+                A one thumb endless runner where cartoon politicians fly across the capital on
+                nothing but their own catastrophic digestive decisions. Hold to fly. Release to
+                fall. That is the entire control scheme.
+              </p>
+              <ul class="spec">
+                <li>Six stages of facial ruin, and the longer you hold the worse it gets</li>
+                <li>Subpoena missiles, red tape, angry pigeons, paparazzi drones</li>
+                <li>A deliberately bipartisan cabinet to unlock, from free to $100,000</li>
+                <li>Free to play, no login, works with the wifi off</li>
+              </ul>
+              <p class="pill" style="margin: 0 0 22px"><span class="dot"></span>In testing · App Store and Google Play next</p>
+              <div class="cta-row" style="margin-top: 0">
+                <a class="btn btn-primary" href="/polifartride/">Open the game page</a>
+              </div>
+            </div>
+            <div class="shot">
+              <img src="/assets/img/shot-1.webp" width="1389" height="642" alt="Poli Fartride key art: a caricature politician fart-flying past the White House, captioned hold to fart-fly, release to plummet" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- ========================================================= rules == -->
+      <section id="studio">
+        <div class="shell">
+          <p class="label">02 / The rules</p>
+          <h2 class="display" style="margin-bottom: 34px">Three rules I do not break.</h2>
+          <div class="grid-3">
+            <div class="card">
+              <span class="num">01</span>
+              <h3>One thumb, no tutorial.</h3>
+              <p>
+                If a game needs a second hand or a screen explaining which button does what, it is
+                not finished. You should be able to play it with the hand that is already holding
+                the phone, standing up, on a bus.
+              </p>
+            </div>
+            <div class="card">
+              <span class="num">02</span>
+              <h3>Nothing to sign up for.</h3>
+              <p>
+                No account, no email, no cloud save you did not ask for. Your progress lives on your
+                device. The games run on a plane, in a basement, with the wifi off, and the privacy
+                policy is short enough to actually read.
+              </p>
+            </div>
+            <div class="card">
+              <span class="num">03</span>
+              <h3>Free to find out.</h3>
+              <p>
+                You get to learn whether a game is fun before anybody asks you for money. Ads are
+                optional and buying anything is optional. If the first sixty seconds are not worth
+                it, nothing after them will be either.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- =========================================================== who == -->
+      <section id="who">
+        <div class="shell who">
+          <div>
+            <p class="label">03 / Who</p>
+            <h2 class="display">One person, one desk.</h2>
+          </div>
+          <div>
+            <p>
+              I am Samuel. I write the code, direct the art, cut the clips, and answer the support
+              email myself, which is why a reply comes back from a person instead of a ticket
+              number. Samyu Studio is based in Texas and builds for iPhone and Android.
+            </p>
+            <p>
+              Bug reports, press, or a question about a game, all to the same place:
+            </p>
+            <p class="mail"><a href="mailto:support@samyu.studio">support@samyu.studio</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="shell">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="wordmark" href="/">
+              <img class="mark" src="/assets/img/favicon.svg" width="22" height="22" alt="" />
+              Samyu Studio
+            </a>
+            <p style="color: var(--muted); font-size: 0.9rem; max-width: 34ch; margin: 14px 0 0">
+              Small mobile games that explain themselves.
+            </p>
+          </div>
+          <div>
+            <h4>Games</h4>
+            <ul>
+              <li><a href="/polifartride/">Poli Fartride</a></li>
+              <li><a href="/polifartride/privacy.html">Privacy policy</a></li>
+              <li><a href="/polifartride/support.html">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Studio</h4>
+            <ul>
+              <li><a href="#studio">The rules</a></li>
+              <li><a href="#who">Who</a></li>
+              <li><a href="mailto:support@samyu.studio">support@samyu.studio</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="fineprint">
+          © 2026 Samyu Studio. Poli Fartride is a work of satire. All characters are fictional
+          cartoon caricatures with invented parody names, and the game is not affiliated with,
+          endorsed by, or sponsored by any real person, political party, agency, or organization.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/strain.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,290 @@
+/* =========================================================================
+   Studio home — hero, the hold demo, the game feature, the rules.
+   Loads after site.css.
+   ========================================================================= */
+
+/* Very low-amplitude noise over the whole page. Flat near-black reads as cheap
+   on OLED phones; the grain gives it a printed surface for ~1 KB and no request. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.nav,
+main,
+.foot {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------------------------------------------------- hero -- */
+.hero {
+  padding-block: clamp(44px, 7vw, 86px) clamp(56px, 8vw, 104px);
+  overflow: hidden;
+}
+.hero::after {
+  /* warm floor light, roughly where the hold button sits */
+  content: '';
+  position: absolute;
+  right: -10%;
+  bottom: -30%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 780px;
+  max-height: 780px;
+  background: radial-gradient(circle, rgba(242, 193, 78, 0.13), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-in {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.16fr 0.84fr;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+/* Sized against the LEFT COLUMN, not the viewport: "NO TUTORIAL." in Luckiest Guy
+   runs about 6x its font size, so the global display clamp overflows this column
+   and breaks the headline onto four lines. */
+.hero h1 {
+  margin: 14px 0 0;
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+}
+.hero h1 .l2 {
+  display: block;
+  color: var(--gold);
+}
+.hero .lede {
+  margin-top: 22px;
+}
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+@media (max-width: 860px) {
+  .hero-in {
+    grid-template-columns: 1fr;
+  }
+  /* Stacked, the headline gets the full shell width back. */
+  .hero h1 {
+    font-size: clamp(2.9rem, 12vw, 4.4rem);
+  }
+}
+
+/* ------------------------------------------------------------ hold demo -- */
+.strain {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+.strain-stage {
+  position: relative;
+  width: min(340px, 74vw);
+  aspect-ratio: 440 / 670;
+  filter: drop-shadow(0 26px 40px rgba(0, 0, 0, 0.55));
+}
+.strain-stage::before {
+  /* pool of light the character sits in, so he is not floating on flat black */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4%;
+  translate: -50% 0;
+  width: 116%;
+  height: 46%;
+  background: radial-gradient(ellipse at center, rgba(242, 193, 78, 0.2), transparent 68%);
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+.is-max .strain-stage::before {
+  background: radial-gradient(ellipse at center, rgba(214, 59, 49, 0.34), transparent 68%);
+}
+.strain-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+.strain-stage img.is-on {
+  opacity: 1;
+}
+/* He strains while you hold, and loses it entirely at the top of the meter. */
+.is-held .strain-stage {
+  animation: strain-shudder 0.14s linear infinite;
+}
+.is-max .strain-stage {
+  animation: strain-shake 0.07s linear infinite;
+}
+@keyframes strain-shudder {
+  50% {
+    transform: translate3d(0.6px, -0.8px, 0);
+  }
+}
+@keyframes strain-shake {
+  25% {
+    transform: translate3d(-2.5px, 1px, 0) rotate(-0.5deg);
+  }
+  75% {
+    transform: translate3d(2.5px, -1px, 0) rotate(0.5deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-held .strain-stage,
+  .is-max .strain-stage {
+    animation: none;
+  }
+}
+
+.strain-meter {
+  width: min(300px, 70vw);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+.strain-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-hot));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.is-max .strain-meter span {
+  background: linear-gradient(90deg, var(--gold), var(--red));
+}
+
+.hold {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: #10131b;
+  background: var(--gold);
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 54px;
+  cursor: pointer;
+  touch-action: none; /* a hold must not become a page scroll */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 8px 0 #b98d24, 0 18px 34px -12px rgba(0, 0, 0, 0.9);
+  transition: transform 0.06s ease, box-shadow 0.06s ease, background 0.2s ease;
+}
+.is-held .hold {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 #b98d24, 0 8px 18px -10px rgba(0, 0, 0, 0.9);
+}
+.is-max .hold {
+  background: var(--red);
+  box-shadow: 0 2px 0 #92251d, 0 8px 18px -10px rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+.strain-read {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
+  min-height: 2.4em;
+  max-width: 30ch;
+}
+
+/* ---------------------------------------------------------- game feature -- */
+.feature {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(26px, 4vw, 56px);
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .feature {
+    grid-template-columns: 1fr;
+  }
+}
+.feature-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.feature-head img {
+  width: 66px;
+  height: 66px;
+  border-radius: 15px;
+  border: 1px solid var(--line-2);
+  flex: none;
+}
+.game-title {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--gold);
+}
+.feature .lede {
+  margin-bottom: 22px;
+}
+.spec {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.spec li {
+  display: flex;
+  gap: 11px;
+}
+.spec li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 0.62em;
+  flex: none;
+}
+.shot {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.95);
+}
+
+/* ------------------------------------------------------------------ who -- */
+.who {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(26px, 5vw, 60px);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .who {
+    grid-template-columns: 1fr;
+  }
+}
+.who p {
+  color: var(--muted);
+  margin: 0 0 1.05em;
+  max-width: 56ch;
+}
+.who .mail {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+}
