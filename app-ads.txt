@@ -1,5 +1,11 @@
 # app-ads.txt — authorizes sellers of this developer's app ad inventory.
-# REQUIRED at the domain root once AdMob is live. Replace pub-0000000000000000
-# with the real AdMob publisher ID (AdMob > Settings > Publisher ID), then add
-# the same domain in App Store Connect / Play Console as the developer website.
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+# Served at https://samyu.studio/app-ads.txt. Google crawls this to confirm the
+# publisher ID declared here matches the one serving ads in the app; without a
+# match, inventory is treated as unauthorized and fill rate suffers badly.
+#
+# The developer website must be set to https://samyu.studio in BOTH App Store
+# Connect and Play Console, or the crawler never finds this file.
+#
+# Publisher ID taken from the AdMob app/unit IDs created 2026-08-04
+# (ca-app-pub-6597645787815415~... -> pub-6597645787815415).
+google.com, pub-6597645787815415, DIRECT, f08c47fec0942fa0
