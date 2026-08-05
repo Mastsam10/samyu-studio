@@ -7,5 +7,5 @@
 # Connect and Play Console, or the crawler never finds this file.
 #
 # Publisher ID taken from the AdMob app/unit IDs created 2026-08-04
-# (ca-app-pub-6597645787815415~... -> pub-6597645787815415).
-google.com, pub-6597645787815415, DIRECT, f08c47fec0942fa0
+# (ca-app-pub-4799516547715864~... -> pub-4799516547715864).
+google.com, pub-4799516547715864, DIRECT, f08c47fec0942fa0
